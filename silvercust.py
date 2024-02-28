@@ -24,7 +24,7 @@ pipeline = Pipeline([
 ])
 
 # Drop unnecessary columns
-df_clean = df.drop(['Unnamed: 0','No_x','No_y','RFM_Level','Shipment_Date','Sell_to_Customer_No'], axis=1)
+df_clean = df.drop(['No_x','No_y','RFM_Level','Shipment_Date','Sell_to_Customer_No'], axis=1)
 
 # Fit and transform the data using the pipeline
 pipeline.fit(df_clean)
