@@ -7,7 +7,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
-df=pd.read_csv("C:/Users/User/Downloads/customer_data.csv")
+path=('https://drive.google.com/file/d/1gF3pNTZA516VG97E5PyReaaORUdGXdpY/view?usp=sharing')
+df=pd.read_csv(path)
 
 st.write("""
 # ***Customer Segmentation System***
