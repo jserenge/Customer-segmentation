@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
-url = ''
+url = 'https://raw.githubusercontent.com/jserenge/Customer-segmentation/main/customer_data.csv'
 df = pd.read_csv(url)
 
 st.write("""
