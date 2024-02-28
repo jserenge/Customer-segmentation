@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
-path=('https://drive.google.com/file/d/1gF3pNTZA516VG97E5PyReaaORUdGXdpY/view?usp=sharing')
+path=('https://drive.google.com/uc?export=download&id=1gF3pNTZA516VG97E5PyReaaORUdGXdpY')
 df=pd.read_csv(path)
 
 st.write("""
