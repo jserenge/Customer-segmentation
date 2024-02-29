@@ -9,7 +9,6 @@ from sklearn.cluster import KMeans
 
 url = 'https://raw.githubusercontent.com/jserenge/Customer-segmentation/main/customer_data.csv'
 df = pd.read_csv(url)
-df.fillna(df.mean(), inplace=True)
 
 st.write("""
 # ***Customer Segmentation System***
@@ -24,8 +23,6 @@ pipeline = Pipeline([
     ('clustering', KMeans(n_clusters=4, random_state=0))
 ])
 
-# Drop unnecessary columns
-df_clean = df.drop(['No_x','No_y','RFM_Level','Shipment_Date','Sell_to_Customer_No'], axis=1)
 
 # Fit and transform the data using the pipeline
 pipeline.fit(df_clean)
