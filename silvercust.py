@@ -151,17 +151,6 @@ new_customer = pd.DataFrame({
     'Number_productlines': [number_productlines],
     'RFM_Score': [rfm_score]
 })
-
-# Predict the cluster for the new customer
-import streamlit as st
-import pandas as pd 
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.cluster import KMeans
-
 df=pd.read_csv("C:/Users/User/Downloads/customer_data.csv")
 
 st.write("""
@@ -337,3 +326,5 @@ selected_cluster_stats = df_clean[df_clean['Clusters'] == customer_cluster[0]].d
 
 st.subheader(f"Summary Statistics of Cluster {customer_cluster[0]}")
 st.write(selected_cluster_stats)
+if __name__ == '__main__':
+    main()
