@@ -94,23 +94,6 @@ for i, color in enumerate(colors):
 plt.tight_layout()
 st.pyplot(plt)
 
-st.header("Interactive Filtering and Customer Profile Visualizations")
-
-# Filter by RFM Score
-rfm_score_min = st.slider('Minimum RFM Score', min_value=int(df['RFM_Score'].min()), max_value=int(df['RFM_Score'].max()), value=int(df['RFM_Score'].min()))
-rfm_score_max = st.slider('Maximum RFM Score', min_value=int(df['RFM_Score'].min()), max_value=int(df['RFM_Score'].max()), value=int(df['RFM_Score'].max()))
-
-# Filter the data based on RFM Score
-filtered_df = df[(df['RFM_Score'] >= rfm_score_min) & (df['RFM_Score'] <= rfm_score_max)]
-
-# Display filtered data with limited columns
-st.write(f"Filtered Data based on RFM Score ({rfm_score_min} - {rfm_score_max})")
-st.write(filtered_df[['Sell_to_Customer_No', 'RFM_Score', 'total_spend', 'Total_transactions']])
-
-# Customer Profile Visualizations
-selected_customer = st.selectbox("Select Customer ID", filtered_df['Sell_to_Customer_No'].unique())
-customer_data = df[df['Sell_to_Customer_No'] == selected_customer]
-
 # Display customer profile statistics in a table
 if not customer_data.empty:
     st.subheader(f"Customer Profile for {selected_customer}")
@@ -131,8 +114,4 @@ st.subheader("Select the cluster to display")
 
 # Select cluster
 cluster = st.selectbox('Select cluster', df['Clusters'].unique())
-
-# Display the selected cluster table
-num_rows_to_display = st.number_input('Enter the number of rows to display:', min_value=1, max_value=len(df), value=5)
-selected_cluster_df = df[df['Clusters'] == cluster][['Sell_to_Customer_No', 'RFM_Score','Total_transactions','Total_purchased','total_spend' 'Clusters']].head(num_rows_to_display)
-st.table(selected_cluster_df)
+selected_cluster_df = df[df['Clusters'] == cluster][['Sell_to_Customer_No', 'RFM_Score','Total_transactions','Total_purchased','total_spend', 'Clusters']].head(num_rows_to_display)
