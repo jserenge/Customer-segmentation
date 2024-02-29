@@ -9,7 +9,7 @@ from sklearn.cluster import KMeans
 
 url = 'https://raw.githubusercontent.com/jserenge/Customer-segmentation/main/customer_data.csv'
 df = pd.read_csv(url)
-df_clean=df.drop('Sell_to_Customer_No',axis=1)
+df_clean=df.drop(columns='Sell_to_Customer_No')
 
 
 st.write("""
@@ -37,6 +37,7 @@ clusters = pipeline.predict(df_selected_features)
 
 # Add the clusters to the DataFrame
 df["Clusters"] = clusters
+df_clean["Clusters"]=clusters
 
 st.header("The Different Customer Segments")
 
@@ -330,5 +331,3 @@ selected_cluster_stats = df_clean[df_clean['Clusters'] == customer_cluster[0]].d
 
 st.subheader(f"Summary Statistics of Cluster {customer_cluster[0]}")
 st.write(selected_cluster_stats)
-if __name__ == '__main__':
-    main()
