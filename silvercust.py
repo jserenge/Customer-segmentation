@@ -9,6 +9,8 @@ from sklearn.cluster import KMeans
 
 url = 'https://raw.githubusercontent.com/jserenge/Customer-segmentation/main/customer_data.csv'
 df = pd.read_csv(url)
+df_clean=df.drop('Sell_to_Customer_No',axis=1)
+
 
 st.write("""
 # ***Customer Segmentation System***
@@ -27,7 +29,7 @@ pipeline = Pipeline([
 selected_features = ['Days_lastpurchase', 'Total_transactions', 'Total_purchased', 'total_spend', 'Number_productlines', 'RFM_Score']
 
 # Filter the DataFrame to include only the selected features
-df_selected_features = df[selected_features]
+df_selected_features = df_clean[selected_features]
 
 # Fit and transform the data using the pipeline
 pipeline.fit(df_selected_features)
@@ -41,7 +43,7 @@ st.header("The Different Customer Segments")
 scaler = StandardScaler()
 
 # Standardize the DataFrame
-df_standardized = scaler.fit_transform(df.drop(columns=['Clusters'], axis=1))
+df_standardized = scaler.fit_transform(df_clean.drop(columns=['Clusters'], axis=1))
 
 # Create a new dataframe with standardized values and add the 'Clusters' column back
 df_standardized = pd.DataFrame(df_standardized, columns=df_clean.columns[:-1], index=df.index)
