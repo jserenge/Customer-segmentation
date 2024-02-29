@@ -23,21 +23,25 @@ pipeline = Pipeline([
     ('clustering', KMeans(n_clusters=4, random_state=0))
 ])
 
+# Select specific features to be used in the model
+selected_features = ['Days_lastpurchase', 'Total_transactions', 'Total_purchased', 'total_spend', 'Number_productlines', 'RFM_Score']
+
+# Filter the DataFrame to include only the selected features
+df_selected_features = df[selected_features]
 
 # Fit and transform the data using the pipeline
-pipeline.fit(df_clean)
-clusters = pipeline.predict(df_clean)
+pipeline.fit(df_selected_features)
+clusters = pipeline.predict(df_selected_features)
 
 # Add the clusters to the DataFrame
 df["Clusters"] = clusters
-df_clean["Clusters"]=clusters
 
 st.header("The Different Customer Segments")
 
 scaler = StandardScaler()
 
 # Standardize the DataFrame
-df_standardized = scaler.fit_transform(df_clean.drop(columns=['Clusters'], axis=1))
+df_standardized = scaler.fit_transform(df.drop(columns=['Clusters'], axis=1))
 
 # Create a new dataframe with standardized values and add the 'Clusters' column back
 df_standardized = pd.DataFrame(df_standardized, columns=df_clean.columns[:-1], index=df.index)
