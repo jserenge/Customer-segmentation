@@ -95,6 +95,8 @@ plt.tight_layout()
 st.pyplot(plt)
 
 # Display customer profile statistics in a table
+selected_customer = st.selectbox("Select Customer ID", df['Sell_to_Customer_No'].unique())
+customer_data = df[df['Sell_to_Customer_No'] == selected_customer]
 if not customer_data.empty:
     st.subheader(f"Customer Profile for {selected_customer}")
     
