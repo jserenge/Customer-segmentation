@@ -134,7 +134,7 @@ cluster = st.selectbox('Select cluster', df['Clusters'].unique())
 
 # Display the selected cluster table
 num_rows_to_display = st.number_input('Enter the number of rows to display:', min_value=1, max_value=len(df), value=5)
-selected_cluster_df = df[df['Clusters'] == cluster][['Sell_to_Customer_No', 'RFM_Score', 'Clusters']].head(num_rows_to_display)
+selected_cluster_df = df[df['Clusters'] == cluster][['Sell_to_Customer_No', 'RFM_Score','Total_transactions','Total_purchased','total_spend' 'Clusters']].head(num_rows_to_display)
 st.table(selected_cluster_df)
 
 st.header("Predicting Cluster for Specific Customer")
