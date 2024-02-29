@@ -9,6 +9,7 @@ from sklearn.cluster import KMeans
 
 url = 'https://raw.githubusercontent.com/jserenge/Customer-segmentation/main/customer_data.csv'
 df = pd.read_csv(url)
+df.fillna(df.mean(), inplace=True)
 
 st.write("""
 # ***Customer Segmentation System***
